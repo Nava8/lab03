@@ -11,16 +11,47 @@
 
         <h3>Curso seleccionado:</h3>
         <p><strong>Curso:</strong> <%= curso %></p>
+        <% var precio = 0.0 %>
+        <% var descuento = 0 %>
+        <% switch(curso){
+            case 'Java':
+                precio=1200
+                break;
+            case 'PHP':
+                precio=800
+                break;
+            case 'NET':
+                precio=1500
+                break;    
+        } %>
+        
+        <h3>Niveles seleccionnado:</h3>
+        <p><strong>Niveles</strong> <%= niveles %></p>
+        <% switch(niveles.length){
+            case 1:
+                precio = precio * 1
+                break;
+            case 2:
+                precio = precio * 2
+                break;
+            case 3:
+                precio = precio * 3
+                break;
+        } %>
 
         <h3>Medio de pago seleccionado:</h3>
         <p><strong>Medio de Pago:</strong> <%= medioPago %></p>
-
+            <% if (medioPago == "Efectivo"){
+                descuento = precio * 0.1;
+                precio = precio - descuento
+            } %>
         <h3>Datos de confirmación:</h3>
         <p>¡Su matrícula ha sido confirmada! Los siguientes son los detalles de su matrícula:</p>
 
         <ul>
             <li><strong>Curso:</strong> <%= curso %></li>
             <li><strong>Medio de Pago:</strong> <%= medioPago %></li>
+            <li><strong>Precio</strong> <%= precio %></li>
         </ul>
     </div>
 </body>
